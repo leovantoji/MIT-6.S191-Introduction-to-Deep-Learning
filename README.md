@@ -1,2 +1,33 @@
 # MIT-6.S191-Introduction-to-Deep-Learning
-MIT 6.S191: Introduction to Deep Learning course
+
+## Introduction to Deep Learning
+- All activation functions are non-linear.
+- The purpose of activation functions is to **introduce non-linearities** into the network.
+- Common activation functions:
+  - Sigmoid function: `tf.nn.sigmoid(z)`: 
+    - *g(z) = (1 + e<sup>-z</sup>)<sup>-1</sup>*
+    - *g<sup>'</sup>(z) = g(z) × (1 - g(z))*
+  - Hyperbolic Tangent: `tf.nn.tanh(z)`: 
+    - *g(z) = (e<sup>z</sup> - e<sup>-z</sup>) × (e<sup>z</sup> + e<sup>-z</sup>)<sup>-1</sup>*
+    - *g<sup>'</sup>(z) = 1 - g(z)<sup>2</sup>*
+  - Rectified Linear Unit (ReLU):
+    - *g(z) = max(0, z)*
+    - *g<sup>'</sup>(z) = 1* when *z > 0* and *0* otherwise.
+- The **loss** of our network measures the cost incurred from incorrect predictions.
+  - *L(f(x<sup>(i)</sup>; **W**), y<sup>(i)</sup>)*
+- The **empirical loss** measures the total loss over our entire dataset.
+  - ***J(W)** = n<sup>-1</sup>**Σ**L(f(x<sup>(i)</sup>; **W**), y<sup>(i)</sup>)*
+- **Cross entropy loss** can be used with models that output a probability between 0 and 1.
+  - ***J(W)** = n<sup>-1</sup>**Σ**y<sup>(i)</sup>log(f(x<sup>(i)</sup>; **W**)) + (1 - y<sup>(i)</sup>)log(1 - f(x<sup>(i)</sup>; **W**))*
+  - `loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(model.y, model.pred))`
+- **Mean squared error loss** can be used with regression models that output continuous real numbers.
+  - ***J(W)** = n<sup>-1</sup>**Σ**(y<sup>(i)</sup> - f(x<sup>(i)</sup>; **W**))<sup>2</sup>*
+  - `loss = tf.reduce_mean(tf.square(tf.subtract(model.y, model.pred))`
+- **Loss optimisation** is to find the network weights that **achieve the lowest loss**.
+  - ***W**<sup>\*</sup> = argmin J(**W**)*
+- Gradient Descent:
+  - Initialise weights randomly: `weights = tf.random_normal(shape, stddev=sigma)`
+  - Loop until convergence:
+    - Compute gradient: `grads = tf.gradients(ys=loss, xs=weights)`
+    - Update weights: `weights_new = weights.assign(weights - lr * grads)`
+  - Return weights.
