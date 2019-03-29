@@ -47,3 +47,14 @@
   - Adadelta: `tf.train.AdadeltaOptimizer`
   - Adam: `tf.train.AdamOptimizer`
   - RMSProp: `tf.train.RMSPropOptimizer`
+- **Mini-batches** while training leads to:
+  - More accurate estimation of gradient: smoother convergence and possible to have larger learning rates.
+  - Fast training: parallel computation and significant speed increases on GPU's.
+- **Regularisation** is a technique that contrains our optimisation problem to discourage complex models. This technique helps improve generalisation of the model on unseen data.
+  - Reguralisation 1: Dropout: 
+    - During training, randomly set some activations to 0. This forces network to not rely on any single node.
+    - `tf.keras.layers.Dropout(p=0.5)`
+  - Regularisation 2: Early Stopping:
+    - Stop training before we have a chance to overfit.
+
+## Deep Sequence Modeling with Recurrent Neural Networks
