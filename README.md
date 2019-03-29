@@ -57,4 +57,27 @@
   - Regularisation 2: Early Stopping:
     - Stop training before we have a chance to overfit.
 
-## Deep Sequence Modeling with Recurrent Neural Networks
+## Deep Sequence Modeling with Recurrent Neural Networks (RNN)
+- Problems when modelling sequence:
+  - Problem 1: A fixed window can't model long-term dependencies.
+  - Problem 2: Set of counts (Bag of words) doesn't preserve order.
+  - Problem 3: Big fixed window doesn't enable parameter sharing.
+- To model sequences, we need to:
+  - Handle **variable-length** sequences.
+  - Track **long-term** dependencies.
+  - Maintain information about **order**.
+  - **Share parameters** across the sequence.
+- RNN can model sequences well.
+- One to One: "Vanilla" Neural Network.
+- Many to One: Sentiment Classification.
+- Many to Many: Music Generation.
+- RNN applies a recurrence relation at every time step to process a sequence.
+  - *h<sub>t</sub> = f<sub>W</sub>(h<sub>t-1</sub>, x<sub>t</sub>)*
+  - The same function and set of parameters are used at every time step.
+- RNN state update and output:
+  - Output vector: *y_hat = **W**<sub>hy</sub>h<sub>t</sub>*
+  - Update hidden state: *h<sub>t</sub> = tanh(**W**<sub>hh</sub>h<sub>t-1</sub> + **W**<sub>xh</sub>x<sub>t</sub>)*
+- Computing the gradient wrt *h<sub>0</sub>* involves **many factors of *W<sub>hh</sub>*** (and repeated ***f<sup>'</sup>***!).
+  - Exploding Gradients ← Gradient clipping to scale big gradients.
+  - Vanishing Gradients: Multiplying many **small numbers** together → Errors due to further back time steps have smaller and smaller gradients → Bias network to capture short-term dependencies.
+    - Trick 1: Activation functions: ReLU prevents ***f<sup>'</sup>*** from shrinking the gradients when *x > 0*.
