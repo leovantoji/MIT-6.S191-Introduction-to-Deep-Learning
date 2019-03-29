@@ -77,7 +77,7 @@
 - RNN state update and output:
   - Output vector: *y_hat = **W**<sub>hy</sub>h<sub>t</sub>*
   - Update hidden state: *h<sub>t</sub> = tanh(**W**<sub>hh</sub>h<sub>t-1</sub> + **W**<sub>xh</sub>x<sub>t</sub>)*
-- Computing the gradient wrt *h<sub>0</sub>* involves **many factors of *W<sub>hh</sub>*** (and repeated ***f<sup>'</sup>***!).
+- Computing the gradient wrt *h<sub>0</sub>* involves **many factors of *W<sub>hh</sub>*** (and repeated *f<sup>'</sup>*!).
   - Exploding Gradients ← Gradient clipping to scale big gradients.
   - Vanishing Gradients: Multiplying many **small numbers** together → Errors due to further back time steps have smaller and smaller gradients → Bias network to capture short-term dependencies.
     - Trick 1: Activation functions: ReLU prevents ***f<sup>'</sup>*** from shrinking the gradients when *x > 0*.
