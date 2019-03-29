@@ -99,7 +99,8 @@
     - *C<sub>t</sub> = f<sub>t</sub> × C<sub>t-1</sub> + i<sub>t</sub> × C~<sub>t</sub>*
   - LTSM's use an **output gate** to output certain parts of the cell state.
     - *o<sub>t</sub> = σ(**W<sub>o</sub>**\[h<sub>t-1</sub>, x<sub>t</sub>\] + b<sub>o</sub>)*
-    - *h<sub>t</sub> = *o<sub>t</sub> × tanh(C<sub>t</sub>)*
+    - *h<sub>t</sub> = o<sub>t</sub> × tanh(C<sub>t</sub>)*
     - Sigmoid layer: decide what parts of state to output.
     - Tanh layer: squash values between -1 and 1.
-    - *o<sub>t</sub> × tanh(C<sub>t</sub>): output filtered version of cell state.
+    - *o<sub>t</sub> × tanh(C<sub>t</sub>)*: output filtered version of cell state.
+  - Uninterrupted gradient flow: Backpropagation from ***C<sub>t</sub>*** to ***C<sub>t-1</sub>*** requires only elementwise multiplication which avoids vanishing gradient problem.
