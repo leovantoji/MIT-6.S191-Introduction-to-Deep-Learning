@@ -29,5 +29,21 @@
   - Initialise weights randomly: `weights = tf.random_normal(shape, stddev=sigma)`
   - Loop until convergence:
     - Compute gradient: `grads = tf.gradients(ys=loss, xs=weights)`
-    - Update weights: `weights_new = weights.assign(weights - lr * grads)`
+    - Update weights: `weights_new = weights.assign(weights - learning_rate * grads)`
   - Return weights.
+- **Small learning rates** converge slowly and get stuck in false local minima.
+- **Large learning rates** overshoot, become unstable and diverge.
+- **Stable learning rates** converge smoothly and avoid local minima.
+- Adaptive Learning Rates:
+  - Learning rates are no longer fixed.
+  - Can be made larger or smaller depending on:
+    - how large gradient is.
+    - how fast learning is happening.
+    - size of particular weights.
+    - etc.
+- Algorithm for Adaptive Learning Rates:
+  - Momentum: `tf.train.MomentumOptimizer`
+  - Adagrad: `tf.train.AdagradOptimizer`
+  - Adadelta: `tf.train.AdadeltaOptimizer`
+  - Adam: `tf.train.AdamOptimizer`
+  - RMSProp: `tf.train.RMSPropOptimizer`
