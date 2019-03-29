@@ -81,3 +81,25 @@
   - Exploding Gradients ← Gradient clipping to scale big gradients.
   - Vanishing Gradients: Multiplying many **small numbers** together → Errors due to further back time steps have smaller and smaller gradients → Bias network to capture short-term dependencies.
     - Trick 1: Activation functions: ReLU prevents ***f<sup>'</sup>*** from shrinking the gradients when *x > 0*.
+    - Trick 2: Initilising weights to identity matrix and biases to zero helps prevent the weights from shrinking to zero.
+    - Trick 3: Gated cells (LSTM, GRU, etc.: more complex recurrent unit with gates to control what information is passed through).
+- **Long Short Term Memory (LSTMs)** networks rely on a gated cell to track information throughout many steps.
+  - LSTM repeating modules contain **interacting layers** that **control information flow**, while in a standard RNN, repeating modules contain a **simple computation node**.
+  - LSTM's main a **cell state *C<sub>t</sub>*** where it's easy for information to flow. 
+  - Information is **added** or **removed** to cell state through structures called **gates**.
+  - LSTM's **forget irrelevant** parts of the previous state.
+    - *f<sub>t</sub> = σ(**W<sub>i</sub>**\[h<sub>t-1</sub>, x<sub>t</sub>\] + b<sub>f</sub>)*
+    - Use previous cell output and input
+    - Sigmoid: value 0 and 1 indicate "completely forget" and "permanent keep" respectively.
+  - LSTM's **selectively update** cell state values.
+    - *i<sub>t</sub> = σ(**W<sub>i</sub>**\[h<sub>t-1</sub>, x<sub>t</sub>\] + b<sub>i</sub>)*
+    - *C~<sub>t</sub> = tanh(**W<sub>C</sub>**\[h<sub>t-1</sub>, x<sub>t</sub>\] + b<sub>C</sub>)*
+    - Sigmoid layer: decide what values to update.
+    - Tanh layer: generate new vector of "candidate values" that could be added to the state.
+    - *C<sub>t</sub> = f<sub>t</sub> × C<sub>t-1</sub> + i<sub>t</sub> × C~<sub>t</sub>*
+  - LTSM's use an **output gate** to output certain parts of the cell state.
+    - *o<sub>t</sub> = σ(**W<sub>o</sub>**\[h<sub>t-1</sub>, x<sub>t</sub>\] + b<sub>o</sub>)*
+    - *h<sub>t</sub> = *o<sub>t</sub> × tanh(C<sub>t</sub>)*
+    - Sigmoid layer: decide what parts of state to output.
+    - Tanh layer: squash values between -1 and 1.
+    - *o<sub>t</sub> × tanh(C<sub>t</sub>): output filtered version of cell state.
