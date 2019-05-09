@@ -104,3 +104,28 @@
     - Tanh layer: squash values between -1 and 1.
     - *o<sub>t</sub> × tanh(C<sub>t</sub>)*: output filtered version of cell state.
   - Uninterrupted gradient flow: Backpropagation from ***C<sub>t</sub>*** to ***C<sub>t-1</sub>*** requires only elementwise multiplication which avoids vanishing gradient problem.
+
+## Deep Reinforcement Learning
+- Classes of Learning Problems:
+  
+  ||Supervised Learning|Unsupervised Learning|Reinforcement Learning|
+  |:-|:-|:-|:-|
+  |Data|(x,y). x is data, y is label|x. No Label|state-action pairs|
+  |Goal|Map x → y|Learn underlying structure|Maximise future rewards over many time steps|
+  |Apple example| This thing is an apple|This thing is like the other thing|Eat this thing because it will keep you alive|
+- Reinforcement Learning Key Concepts:
+  - **Agent**: takes actions.
+  - **Environment**: the world in which the agent exists and operates.
+  - **Action**: a move the agent can make in the environment.
+  - **Observation**: of the environment after taking actions.
+  - **State**: a situation which the agent perceives.
+  - **Reward**: feedback that measures the success or failure of the agent's action.
+  - **Total Reward**: *R<sub>t</sub> = Σr<sub>i</sub>*. 
+  - Because *R<sub>t</sub>* can go to infinity, there has to be a **discount factor** which places more weight on short-term timestamp reward and less weight on long-term timestamp from the current state reward. Thus, we have *R<sub>t</sub> = Σγ<sup>i</sup>r<sub>i</sub>*.
+  - **Q-function** captures the **expected total future reward** an agent in state, *s*, can receive by executing a certain action, *a*. Thus, we have *Q(s,a) = E[R<sub>t</sub>]*
+  - The agent needs a **policy π(s)**, to infer the **best action to take** at its state, *s*.
+  - **Strategy**: the policy should choose an action that maximises future reward. *π\*(s) = argmax Q(s,a)*.
+- Deep Reinforcement Learning Algorithms:
+  - **Value learning**: Find *Q(s,a). a = argmax Q(s,a)*.
+  - **Policy learning**: Find *π(s)*. Sample *a ~ π(s)*.
+- 
