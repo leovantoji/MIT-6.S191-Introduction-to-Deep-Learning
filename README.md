@@ -133,7 +133,7 @@
 - **Deep Q Networks (DQN)**:
   
   |Input|NN|Output|
-  |:-|:-|:-|
+  |-|-|-|
   |<li>state, *s*</li><li>action, *a*</li>|Deep NN|*Q(s,a)*|
   |state, *s*|Deep NN|<li>*Q(s,a<sub>1</sub>)*</li><li>*Q(s,a<sub>2</sub>)*</li>...|
 - Downsides of Q-learning:
