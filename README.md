@@ -1,4 +1,6 @@
 # MIT-6.S191-Introduction-to-Deep-Learning
+- Below are my personal notes after taking the online MIT Introduction to Deep Learning course.
+- Course content can be found [here](http://introtodeeplearning.com/).
 
 ## Introduction to Deep Learning
 - All activation functions are non-linear.
@@ -128,4 +130,15 @@
 - Deep Reinforcement Learning Algorithms:
   - **Value learning**: Find *Q(s,a). a = argmax Q(s,a)*.
   - **Policy learning**: Find *π(s)*. Sample *a ~ π(s)*.
-- 
+- **Deep Q Networks (DQN)**:
+  
+  |Input|NN|Output|
+  |:-|:-|:-|
+  |<li>state, *s*</li><li>action, *a*</li>|Deep NN|*Q(s,a)*|
+  |state, *s*|Deep NN|<li>*Q(s,a<sub>1</sub>)*</li><li>*Q(s,a<sub>2</sub>)*</li>...|
+- Downsides of Q-learning:
+  - Complexity: 
+    - Can model scenarios where the action space is discrete and small.
+    - Cannot handle continuous action spaces.
+  - Flexibility:
+    - Cannot learn stochastic policies since policy is deterministically computed from the Q function.
