@@ -134,8 +134,8 @@
   
   |Input|NN|Output|
   |-|-|-|
-  |<li>state, *s*</li><li>action, *a*</li>|Deep NN|*Q(s,a)*|
-  |state, *s*|Deep NN|<li>*Q(s,a<sub>1</sub>)*</li><li>*Q(s,a<sub>2</sub>)*</li>...|
+  |<ul><li>state, *s*</li><li>action, *a*</li></ul>|Deep NN|*Q(s,a)*|
+  |state, *s*|Deep NN|<ul><li>*Q(s,a<sub>1</sub>)*</li><li>*Q(s,a<sub>2</sub>)*</li></ul>|
 - Downsides of Q-learning:
   - Complexity: 
     - Can model scenarios where the action space is discrete and small.
