@@ -133,7 +133,7 @@
 - **Deep Q Networks (DQN)**:
   
   |Input|NN|Output|
-  |-|-|-|
+  |:-:|:-:|:-:|
   |<ul><li>state, *s*</li><li>action, *a*</li></ul>|Deep NN|*Q(s,a)*|
   |state, *s*|Deep NN|<ul><li>*Q(s,a<sub>1</sub>)*</li><li>*Q(s,a<sub>2</sub>)*</li></ul>|
 - Downsides of Q-learning:
@@ -142,3 +142,7 @@
     - Cannot handle continuous action spaces.
   - Flexibility:
     - Cannot learn stochastic policies since policy is deterministically computed from the Q function.
+- **Policy Gradient**: directly optimises the policy, while DQN tries to approximate Q and infer the optimal policy.
+  - Run a policy for a while.
+  - Increase probability of actions that lead to high rewards.
+  - Decrease the probability of actions that lead to low/no rewards.
