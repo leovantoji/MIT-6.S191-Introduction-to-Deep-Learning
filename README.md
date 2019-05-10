@@ -146,3 +146,20 @@
   - Run a policy for a while.
   - Increase probability of actions that lead to high rewards.
   - Decrease the probability of actions that lead to low/no rewards.
+
+## Deep Learning Limitations and New Frontiers
+- Neural Network Limitations:
+  - Very **data hungry** (eg. often millions of examples).
+  - **Computationally intensive** to train and deploy (tractably requires GPUs).
+  - Easily fooled by **adversarial examples**.
+  - Can be subject to **algorithmic bias**.
+  - Poor at **representing uncertainty** (how do you know what the model knows?).
+  - Uninterpretable **black boxes**, difficult to trust.
+  - **Finicky to optimize**: non-convex, choice of architecture, learning parameters.
+  - Often require **expert knowledge** to design, fine tune architectures.
+- New Frontiers:
+  - Bayesian Deep Learning for Uncertainty.
+  - Learning to Learn. Google AutoML:
+    - Design an AI algorithm that can build new models capable of solving a task.
+    - Reduce the need for the experienced engineers to design the network.
+    - Make deep learning more accessible to the public.
